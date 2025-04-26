@@ -9,18 +9,17 @@ class ConfigValidator:
 
     @staticmethod
     def version_validator(value):
-        pattern_version = re.compile(r'^\d+\.\d+\.d+$', re.I)
-        return bool(pattern_version.match(str(value).strip()))
+        return re.match(r'^\d+\.\d+\.\d+$', value) is not None
 
     @staticmethod
     def bool_validator(value):
         return str(value).lower() in ("true", "false")
 
     @staticmethod
-    def threads_validator(value):
+    def integer_validator(value, min_value, max_value):
         try:
             num = int(value)
-            return 1 <= num <= 16
+            return min_value <= num <= max_value
         except(ValueError, TypeError):
             return False
 

@@ -5,7 +5,8 @@ import os
 
 class ConfigReader:
     def __init__(self, config_path=None):
-        self.config_path = config_path or os.getenv('CONFIG_PATH', 'config.ini')
+        default_path = Path(__file__).parent.parent / "config.ini"
+        self.config_path = config_path or os.getenv('CONFIG_PATH', default_path)
         self.config = configparser.ConfigParser()
 
     def read_config(self):

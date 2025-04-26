@@ -16,7 +16,8 @@ def test_config_app_section_exists(config):
                         ("Name", "string_validator", None),
                         ("Version", "version_validator", None),
                         ("DebugMode", "bool_validator", None),
-                        ("MaxThreads", "integer_validator", (1, 16))
+                        ("MaxThreads", "integer_validator", (1, 16)),
+                        ("LogLevel", "log_level_validator", None)
 ])
 def test_app_validator(config, param, validator, args):
     assert param in config['App'], f'Параметр {param} отсутствует в [App]'

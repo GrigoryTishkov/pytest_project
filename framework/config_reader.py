@@ -8,6 +8,7 @@ class ConfigReader:
         default_path = Path(__file__).parent.parent / "config.ini"
         self.config_path = config_path or os.getenv('CONFIG_PATH', default_path)
         self.config = configparser.ConfigParser()
+        self.config.optionxform = str
 
     def read_config(self):
         if not Path(self.config_path).exists():

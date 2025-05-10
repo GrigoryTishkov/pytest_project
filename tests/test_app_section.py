@@ -28,6 +28,9 @@ def test_app_validator(config, param, validator, args):
     else:
         assert validate_func(value), f'Тест упал на {param}={value}'
 
-def test_app_validator_null():
-    pass
+def test_app_validator_null(config):
+    allowed_params ={'Name', 'Version', 'DebugMode', 'MaxThreads', 'LogLevel'}
+    actual_params = set(config['App'].keys())
+    unexpected_params = actual_params - allowed_params
+    assert not unexpected_params, f'Параметры {unexpected_params} не допустимы'
 

@@ -26,4 +26,8 @@ class ConfigValidator:
     @staticmethod
     def log_level_validator(value):
         return str(value) in ("debug", "info", "warning", "error")
+    
+    @staticmethod
+    def database_validator(value):
+        return re.match(r'^[a-zA-Z0-9]+$', value) is not None
 

@@ -29,5 +29,5 @@ class ConfigValidator:
     
     @staticmethod
     def database_validator(value):
-        return re.match(r'^[a-zA-Z0-9]+$', value) is not None
+        return re.match(r'^\w+$', value) is not None
 
